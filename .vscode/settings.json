@@ -1,0 +1,12 @@
+{
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.svelte-kit": true,
+        "**/src-tauri/target": true,
+    },
+    "files.watcherExclude": {
+        "**/node_modules": true,
+        "**/.svelte-kit": true,
+        "**/src-tauri/target": true,
+    },
+}
