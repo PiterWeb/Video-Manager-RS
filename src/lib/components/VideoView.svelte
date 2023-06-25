@@ -3,7 +3,6 @@
 	import { appWindow } from '@tauri-apps/api/window';
 	import { tauri } from '@tauri-apps/api';
 
-	let playerElement: HTMLElement;
 	let fullscreen = false;
 	let player: any;
 	let videoPath = !$selectedVideo ? '' : tauri.convertFileSrc($selectedVideo);
@@ -43,10 +42,5 @@
 </svelte:head>
 
 <!-- Video player -->
-<section
-	class="basis-1/3"
-	id="player"
-	bind:this={playerElement}
-	on:fullscreenchange={toggleFullscreen}
-/>
+<section class="basis-1/3" id="player" on:fullscreenchange={toggleFullscreen} />
 <!-- Video player -->

@@ -77,7 +77,7 @@
       }
     },
     "security": {
-      "csp": "default-src 'self'; asset: https://asset.localhost"
+      "csp": "default-src 'self';script-src 'unsafe-eval'; style-src 'unsafe-inline';style-src-elem 'self'; media-src 'self' asset: https://asset.localhost"
     },
     "updater": {
       "active": false
