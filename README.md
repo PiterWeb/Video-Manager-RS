@@ -1,2 +1,37 @@
 # Video Manager RS 🦀
 
+### Description
+
+🔥 Blazingly fast desktop aplication to 📦 browse your favourite movies/videos 🎞
+
+### Purpose
+
+  📚 Learn :
+  - Rust
+  - Tauri
+
+  👷‍♂️ Reinforce my knowledge about svelte
+
+### Technologies used 📘
+
+- Rust 🦀
+  - Tauri
+  - rusqlite
+  - walkdir
+- Typescript ✨
+  - Sveltekit
+  - TailwindCSS 
+    - DaisyUI 💅
+
+## Add to your collection
+
+![add_section](/examples/add_section.jpg)
+
+## Browse your videos
+
+![videos_section](/examples/videos_section.jpg)
+
+### Fully Responsive UI
+
+![responsive_ui](/examples/responsive.jpg)
+
