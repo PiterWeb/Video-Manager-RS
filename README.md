@@ -20,6 +20,7 @@
   - walkdir
 - Typescript ✨
   - Sveltekit
+  - Playerjs 🖼 (low code tool)
   - TailwindCSS 
     - DaisyUI 💅
 
