@@ -5,6 +5,8 @@
 
 🔥 Blazingly fast desktop aplication to 📦 browse your favourite movies/videos 🎞 built on top of Rust 🦀 and Web Technologies
 
+#### [ Download (MacOS, Linux, Windows)](https://github.com/PiterWeb/Video-Manager-RS/releases)
+
 ### Purpose
 
   📚 Learn :
