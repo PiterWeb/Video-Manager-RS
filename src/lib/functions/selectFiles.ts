@@ -9,9 +9,9 @@ export const selectFiles = async () => {
         filters: [{ name: 'Videos', extensions: ['mp4', 'mkv', 'avi'] }]
     });
 
-    if (result === null) return;
+    if (result === null) throw new Error("No folder selected");
 
-    saveFiles(result).catch((e) => console.error(e));
+    saveFiles(result)
 
     // Save path on DB and update the list
 };

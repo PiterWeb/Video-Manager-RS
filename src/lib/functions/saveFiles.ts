@@ -22,7 +22,7 @@ export const saveFiles = async (files: string | string[]) => {
                 path
             });
 
-            if (response.includes(DBInsertVideoError)) throw new Error(response);
+            if (response.includes(DBInsertVideoError)) throw new Error("Error inserting video on DB (maybe it's on your manager already)");
 
             updateVideos(path);
         });
