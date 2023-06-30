@@ -3,7 +3,7 @@
 
 ### Description
 
-🔥 Blazingly fast desktop aplication to 📦 browse your favourite movies/videos 🎞
+🔥 Blazingly fast desktop aplication to 📦 browse your favourite movies/videos 🎞 built on top of Rust 🦀 and Web Technologies
 
 ### Purpose
 
