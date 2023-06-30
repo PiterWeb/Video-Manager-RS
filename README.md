@@ -1,4 +1,5 @@
 # Video Manager RS 🦀
+[![publish](https://github.com/PiterWeb/Video-Manager-RS/actions/workflows/publish-action.yml/badge.svg)](https://github.com/PiterWeb/Video-Manager-RS/actions/workflows/publish-action.yml)
 
 ### Description
 
