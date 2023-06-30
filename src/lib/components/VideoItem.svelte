@@ -67,7 +67,7 @@
 
 			<button
 				on:click={deleteVideo}
-				class="badge badge-error h-12 place-self-end opacity-0 group-hover:opacity-100 self-center"
+				class="btn btn-error h-12 place-self-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 self-center"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

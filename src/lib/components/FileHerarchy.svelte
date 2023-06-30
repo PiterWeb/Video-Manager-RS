@@ -55,16 +55,16 @@
 	<div />
 
 	<ul
-		class="menu bg-base-200 rounded-lg max-w-full w-full transition-all duration-300 -mt-16"
+		class="menu bg-base-200 w-full max-h-[70vh] flex-nowrap -mt-16 transition-all duration-300 !overflow-y-auto"
 		class:opacity-0={$drawerStore}
 		class:translate-y-[6rem]={$videosSelectedForActions.length > 0}
 	>
 		{#if $videos.length > 0}
 			{#each $videos as video}
-				<VideoItem  {video} />
+				<VideoItem {video} />
 			{/each}
 		{:else}
-			<li >
+			<li>
 				<a class="flex flex-row gap-4 items-center" href="/add">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -85,3 +85,25 @@
 		{/if}
 	</ul>
 </section>
+
+<style>
+
+ul {
+		--scrollbarBG: #1e1e1e;
+		--thumbBG: #888;
+	}
+
+	ul::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	ul::-webkit-scrollbar-track {
+		background: #1e1e1e;
+	}
+
+	ul::-webkit-scrollbar-thumb {
+		@apply bg-neutral rounded-full;
+	}
+
+</style>
