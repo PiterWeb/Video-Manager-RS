@@ -22,9 +22,9 @@
 				modalMessage = successModal.message;
 				modal.showModal();
 			})
-			.catch(() => {
+			.catch(({ message: errorMessage }: { message?: string }) => {
 				modalTitle = errorModal.title;
-				modalMessage = errorModal.message;
+				modalMessage = errorMessage || errorModal.message;
 				modal.showModal();
 			});
 	}
@@ -42,6 +42,6 @@
 </dialog>
 
 <section class="basis-1/3">
-	<label for="scan" class="label text-xl normal-case font-bold">Autoscan directories</label>
+	<label for="scan" class="label text-xl normal-case font-bold">Scan directories</label>
 	<button id="scan" class="btn btn-primary w-full" on:click={scan}>Select</button>
 </section>

@@ -16,8 +16,13 @@
 
 - Rust 🦀
   - Tauri
+  - rusqlite
+  - walkdir
 - Typescript ✨
   - Sveltekit
+  - Playerjs 🖼 (low code tool)
+  - TailwindCSS 
+    - DaisyUI 💅
 
 ## Add to your collection
 

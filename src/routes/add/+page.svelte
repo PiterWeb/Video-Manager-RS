@@ -5,6 +5,5 @@
 
 <div class="flex flex-row gap-12">
 	<Dropper />
-	<!-- <div class="divider" /> -->
 	<DirExplorer />
 </div>

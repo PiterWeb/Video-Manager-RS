@@ -4,7 +4,7 @@
 	import { appWindow } from '@tauri-apps/api/window';
 	import { readDir } from '@tauri-apps/api/fs';
 	import { saveFiles } from '$lib/functions/saveFiles';
-	import { selectFiles } from '$lib/functions/selectFiles';
+	import { selectFiles as selectFilesPromise } from '$lib/functions/selectFiles';
 
 	let fileDropState: 'hover' | 'drop' | 'cancel' = 'cancel';
 	let fileDropPaths: string[] = [];
@@ -34,10 +34,19 @@
 		paths: string[];
 	};
 
-	// $: if (fileDropState === 'drop') {
-	// }
-
 	let unlistenFileDrop: Promise<UnlistenFn>;
+
+	function selectFiles() {
+		selectFilesPromise()
+			.then(() => {
+				fileDropState = 'drop';
+			})
+			.catch(({ message: errorMessage }: { message?: string }) => {
+				modalTitle = errorModal.title;
+				modalMessage = errorMessage || errorModal.message;
+				modal.showModal();
+			});
+	}
 
 	onMount(() => {
 		unlistenFileDrop = appWindow.onFileDropEvent((event) => {
@@ -52,9 +61,9 @@
 
 						saveFiles(dir.map((file) => file.path));
 					} catch (e) {
-						saveFiles(path).catch((e) => {
+						saveFiles(path).catch(({ message: errorMessage }: { message?: string }) => {
 							modalTitle = errorModal.title;
-							modalMessage = e;
+							modalMessage = errorMessage || errorModal.message;
 						});
 					}
 				});

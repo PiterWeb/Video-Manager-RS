@@ -8,7 +8,7 @@ export const scanFolder = async () => {
         directory: true
     });
 
-    if (result === null) return;
+    if (result === null) throw new Error("No folder selected");
 
     return invoke<void>('scan_folder', {
         path: result as string

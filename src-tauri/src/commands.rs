@@ -52,7 +52,6 @@ pub fn scan_folder(app_handle: AppHandle, path: &str) {
 
         return is_file && is_supported;
     }) {
-        println!("{}", entry.path().to_str().unwrap());
         insert_video(app_handle.clone(), entry.path().to_str().unwrap());
     }
 }
