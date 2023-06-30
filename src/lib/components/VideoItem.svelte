@@ -2,7 +2,13 @@
 	export let video: string;
 
 	import { selectedVideo } from '$lib/stores/selectedVideo';
+	import { videosSelectedForActions } from '$lib/stores/videosSelectedForActions';
+
 	import { deleteSelectedVideos } from '$lib/functions/deleteSelectedVideos';
+
+	let selected = false;
+
+	$: selected = $videosSelectedForActions.includes(video);
 
 	function deleteVideo() {
 		deleteSelectedVideos([video]);
@@ -11,11 +17,35 @@
 	function selectVideo() {
 		selectedVideo.set(video);
 	}
+
+	function toggleCheckbox({ target }: Event) {
+		if (!(target instanceof HTMLInputElement)) return;
+
+		console.log(target.checked);
+
+		if (target.checked) {
+			$videosSelectedForActions.push(video);
+			$videosSelectedForActions = $videosSelectedForActions;
+			return;
+		}
+
+		$videosSelectedForActions = $videosSelectedForActions.filter((v) => v != video);
+	}
 </script>
 
-<li class="py-2" on:click={selectVideo} on:keydown={selectVideo}>
+<li
+	class="py-2 rounded-lg transition-opacity duration-500 cursor-pointer"
+	class:bg-base-300={$selectedVideo === video}
+	on:click={selectVideo}
+	on:keydown={selectVideo}
+>
 	<span class="flex flex-row justify-start group transition-opacity duration-500">
-		<input type="checkbox" class="checkbox checkbox-primary" />
+		<input
+			type="checkbox"
+			class="checkbox checkbox-primary"
+			on:change={toggleCheckbox}
+			checked={selected}
+		/>
 		<div class="flex flex-row items-center gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -32,11 +62,12 @@
 			>
 		</div>
 
-		<div class="grid grid-cols-2 gap-2">
+		<div class="grid grid-cols-2 gap-2 w-full items-center">
 			{video.split('\\').at(-1)}
+
 			<button
 				on:click={deleteVideo}
-				class="badge badge-warning h-full place-self-end opacity-0 group-hover:opacity-100"
+				class="badge badge-error h-12 place-self-end opacity-0 group-hover:opacity-100 self-center"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
