@@ -5,8 +5,6 @@
 </script>
 
 <div class="flex flex-row gap-12">
-	<!-- File explorer (herarchy) -->
 	<FileHerarchy />
-
 	<VideoView />
 </div>

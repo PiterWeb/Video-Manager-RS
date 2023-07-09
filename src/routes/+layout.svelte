@@ -10,7 +10,6 @@
 </main>
 
 <style>
-	/* custom dark modern scrollbar */
 
 	:root {
 		--scrollbarBG: #1e1e1e;
