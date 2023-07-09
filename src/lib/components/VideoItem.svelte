@@ -1,6 +1,10 @@
 <script lang="ts">
 	export let video: string;
 
+	import { onMount } from 'svelte';
+
+	import { exists } from '@tauri-apps/api/fs';
+
 	import { selectedVideo } from '$lib/stores/selectedVideo';
 	import { videosSelectedForActions } from '$lib/stores/videosSelectedForActions';
 
@@ -21,8 +25,6 @@
 	function toggleCheckbox({ target }: Event) {
 		if (!(target instanceof HTMLInputElement)) return;
 
-		console.log(target.checked);
-
 		if (target.checked) {
 			$videosSelectedForActions.push(video);
 			$videosSelectedForActions = $videosSelectedForActions;
@@ -31,6 +33,15 @@
 
 		$videosSelectedForActions = $videosSelectedForActions.filter((v) => v != video);
 	}
+
+	onMount(async () => {
+		const fileExists = await exists(video);
+
+		if (!fileExists) {
+			deleteVideo();
+		}
+	});
+
 </script>
 
 <li
@@ -44,6 +55,7 @@
 			type="checkbox"
 			class="checkbox checkbox-primary"
 			on:change={toggleCheckbox}
+			on:click={(e) => e.stopPropagation()}
 			checked={selected}
 		/>
 		<div class="flex flex-row items-center gap-2">
