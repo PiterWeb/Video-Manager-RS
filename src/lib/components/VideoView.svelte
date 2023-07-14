@@ -16,7 +16,7 @@
 	}
 </script>
 
-<section class="basis-1/3 flex flex-col">
+<section class="basis-1/3 flex flex-col ">
 	<VideoPlayer />
 	<section>
 		<p class="text-2xl font-bold">{name}</p>

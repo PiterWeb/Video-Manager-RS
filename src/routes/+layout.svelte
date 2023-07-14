@@ -1,16 +1,25 @@
 <script>
 	import '../app.postcss';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import FloatingButton from '$lib/components/FloatingButton.svelte';
+	import PageTransition from '$lib/components/PageTransition.svelte';
+
+	import { page } from '$app/stores';
 </script>
+
+<svelte:head>
+	<link rel="preload" href="/playerjs.js" as="script" />
+</svelte:head>
 
 <Navbar />
 
-<main class="mx-12 my-12 h-full">
+<PageTransition refresh={$page.route.id}>
 	<slot />
-</main>
+</PageTransition>
+
+<!-- <FloatingButton /> -->
 
 <style>
-
 	:root {
 		--scrollbarBG: #1e1e1e;
 		--thumbBG: #888;

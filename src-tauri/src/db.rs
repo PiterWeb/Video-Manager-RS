@@ -9,6 +9,7 @@ pub fn create_db(app_handle: &AppHandle) -> Result<Connection, rusqlite::Error> 
         .path_resolver()
         .app_data_dir()
         .expect("The app data directory should exist.");
+
     fs::create_dir_all(&app_dir).expect("The app data directory should be created.");
     let sqlite_path = app_dir.join("Videos.sqlite");
 
@@ -23,7 +24,8 @@ pub fn create_db(app_handle: &AppHandle) -> Result<Connection, rusqlite::Error> 
     conn.execute_batch(
         "CREATE TABLE IF NOT EXISTS videos (
         id INTEGER PRIMARY KEY,
-        path TEXT NOT NULL UNIQUE
+        path TEXT NOT NULL UNIQUE,
+        favorite BOOLEAN NOT NULL
         );",
     )?;
 
@@ -48,9 +50,9 @@ pub fn upgrade_database_if_needed(
 }
 
 pub fn insert_video(path: &str, db: &Connection) -> Result<(), rusqlite::Error> {
-    let mut query = db.prepare("INSERT INTO videos (path) VALUES (?1)")?;
+    let mut query = db.prepare("INSERT INTO videos (path, favorite) VALUES (?1, ?2)")?;
 
-    query.execute([path])?;
+    query.execute([path, "0"])?;
 
     Ok(())
 }
@@ -79,6 +81,33 @@ pub fn delete_selected_videos(paths: Vec<String>, db: &Connection) -> Result<(),
     for path in paths {
         delete_video(&path, db)?;
     }
+
+    Ok(())
+}
+
+pub fn get_favorite_videos(db: &Connection) -> Result<Vec<String>, rusqlite::Error> {
+    let mut stmt = db.prepare("SELECT path FROM videos WHERE favorite = ?1")?;
+    let favorite_path_iter = stmt.query_map(["1"], |row| Ok(row.get(0)?))?;
+
+    let mut paths = Vec::new();
+
+    for path in favorite_path_iter {
+        paths.push(path?)
+    }
+
+    Ok(paths)
+}
+
+pub fn set_favorite_video(path: &str, db: &Connection) -> Result<(), rusqlite::Error> {
+    let mut query = db.prepare("UPDATE videos SET favorite = 1 WHERE path = ?1")?;
+    query.execute([path])?;
+
+    Ok(())
+}
+
+pub fn unset_favorite_video(path: &str, db: &Connection) -> Result<(), rusqlite::Error> {
+    let mut query = db.prepare("UPDATE videos SET favorite = 0 WHERE path = ?1")?;
+    query.execute([path])?;
 
     Ok(())
 }

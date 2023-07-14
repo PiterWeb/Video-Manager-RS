@@ -6,9 +6,7 @@ mod db;
 mod state;
 
 use crate::state::AppState;
-use ffmpeg_sidecar::{
-    command::ffmpeg_is_installed
-};
+use ffmpeg_sidecar::command::ffmpeg_is_installed;
 use tauri::{Manager, State};
 
 fn main() {
@@ -20,7 +18,10 @@ fn main() {
             commands::insert_video,
             commands::get_videos,
             commands::scan_folder,
-            commands::delete_selected_videos
+            commands::delete_selected_videos,
+            commands::get_favorite_videos,
+            commands::set_favorite_video,
+            commands::unset_favorite_video
         ])
         .setup(|app| {
             let handle = app.handle();

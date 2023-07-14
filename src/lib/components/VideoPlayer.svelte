@@ -42,11 +42,10 @@
 <svelte:head>
 	<script defer src="/playerjs.js" type="text/javascript" on:load={initializePLayer}></script>
 </svelte:head>
-
-<div id="player" on:fullscreenchange={toggleFullscreen} />
-{#if !showVideo}
-	<div class="flex flex-col items-center justify-center h-full">
-		<p class="text-2xl font-bold">No video selected</p>
-		<p class="text-base">Select a video from the left panel</p>
-	</div>
-{/if}
+	<div id="player" class="min-w-[20rem] max-w-full" on:fullscreenchange={toggleFullscreen} />
+	{#if !showVideo}
+		<div class="flex flex-col items-center justify-center h-full">
+			<p class="text-2xl font-bold">No video selected</p>
+			<p class="text-base">Click on a video from the left panel</p>
+		</div>
+	{/if}

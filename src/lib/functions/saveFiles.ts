@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/tauri";
-import { DBInsertVideoError } from "$lib/types/DBError";
 import { videos } from "$lib/stores/videos";
+import { DBInsertVideoError } from "$lib/types/DBError";
 
 const extensions = ['mp4', 'mkv', 'avi']
 
@@ -15,7 +15,7 @@ const updateVideos = (path: string) => {
 export const saveFiles = async (files: string | string[]) => {
     if (files instanceof Array) {
         files.forEach(async (path) => {
-            
+
             if (!extensions.some((ext) => path.endsWith(ext))) throw new Error('Invalid file extension');
 
             const response = await invoke<string>('insert_video', {
