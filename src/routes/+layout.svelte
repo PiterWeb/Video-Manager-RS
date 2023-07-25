@@ -1,7 +1,7 @@
 <script>
 	import '../app.postcss';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import FloatingButton from '$lib/components/FloatingButton.svelte';
+	// import FloatingButton from '$lib/components/FloatingButton.svelte';
 	import PageTransition from '$lib/components/PageTransition.svelte';
 
 	import { page } from '$app/stores';
@@ -16,7 +16,6 @@
 <PageTransition refresh={$page.route.id}>
 	<slot />
 </PageTransition>
-
 <!-- <FloatingButton /> -->
 
 <style>
