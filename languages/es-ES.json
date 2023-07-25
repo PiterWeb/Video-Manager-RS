@@ -1,0 +1,29 @@
+{
+    "app_name": "Video Manager RS",
+    "more": "Más",
+    "close": "Cerrar",
+    "select": "Seleccionar",
+    "navbar": {
+        "explore": "Explorar",
+        "add": "Añadir"
+    },
+    "video_player": {
+        "no_video": "No has seleccionado ningún vídeo",
+        "no_video_description": "Selecciona un vídeo de la lista de la izquierda para empezar a reproducirlo"
+    },
+    "explorer": {
+        "scan_directories": "Scanear directorios"
+    },
+    "filter": {
+        "only_starred": "Solo favoritos",
+        "only_selected": "Solo seleccionados"
+    },
+    "actions": {
+        "delete": "Borrar",
+        "cancel": "Cancelar"
+    },
+    "video_herarchy": {
+        "title": "Selecciona un video para empezar a reproducirlo",
+        "no_videos": "No se han encontrado vídeos"
+    }
+}
