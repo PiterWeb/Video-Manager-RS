@@ -3,6 +3,8 @@
 	import { appWindow } from '@tauri-apps/api/window';
 	import { tauri } from '@tauri-apps/api';
 
+	import { i } from '@inlang/sdk-js';
+
 	let showVideo = false;
 	let fullscreen = false;
 	let player: any;
@@ -11,6 +13,7 @@
 	function toggleFullscreen() {
 		console.log('toggleFullscreen');
 		fullscreen = !fullscreen;
+
 		appWindow.setFullscreen(fullscreen);
 	}
 
@@ -23,7 +26,7 @@
 		player = new window.Playerjs({
 			id: 'player',
 			file: videoPath,
-			autoplay: false
+			autoplay: false,
 		});
 	}
 
@@ -42,10 +45,10 @@
 <svelte:head>
 	<script defer src="/playerjs.js" type="text/javascript" on:load={initializePLayer}></script>
 </svelte:head>
-	<div id="player" class="min-w-[20rem] max-w-full" on:fullscreenchange={toggleFullscreen} />
-	{#if !showVideo}
-		<div class="flex flex-col items-center justify-center h-full">
-			<p class="text-2xl font-bold">No video selected</p>
-			<p class="text-base">Click on a video from the left panel</p>
-		</div>
-	{/if}
+<div id="player" class="min-w-[20rem] max-w-full" on:fullscreenchange={toggleFullscreen} />
+{#if !showVideo}
+	<div class="flex flex-col items-center justify-center h-full">
+		<p class="text-2xl font-bold">{i("video_player.no_video")}</p>
+		<p class="text-base">{i("video_player.no_video_description")}</p>
+	</div>
+{/if}

@@ -4,6 +4,8 @@
 
 	import Filter from '$lib/types/Filter';
 
+	import { i } from '@inlang/sdk-js';
+
 	import { onMount } from 'svelte';
 
 	import { getVideos } from '$lib/functions/getVideos';
@@ -37,7 +39,7 @@
 <section class="basis-2/3">
 	<div class="join join-vertical w-full">
 		<div class="mb-4 flex flex-row justify-between items-center">
-			<p class="text-xl ml-4 font-bold">Select a video to play</p>
+			<p class="text-xl ml-4 font-bold">{i("video_herarchy.title")}</p>
 			<FilterButton />
 		</div>
 
@@ -69,7 +71,7 @@
 							d="M12 6v6m0 0v6m0-6h6m-6 0H6"
 						/></svg
 					>
-					No videos found
+					{i("video_herarchy.no_videos")}
 				</a>
 			</li>
 		{/if}

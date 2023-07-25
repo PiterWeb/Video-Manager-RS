@@ -3,6 +3,8 @@
 
 	import Filter from '$lib/types/Filter';
 
+	import { i } from '@inlang/sdk-js';
+
 	import { drawerStore } from '$lib/stores/drawer';
 	import { activeFilters } from '$lib/stores/activeFilters';
 
@@ -24,7 +26,9 @@
 			class="indicator-item badge badge-sm badge-secondary transition-opacity duration-200 ease-in-out animate-bounce"
 			class:opacity-0={$activeFilters.length <= 0}>{$activeFilters.length}</span
 		>
-		<label tabindex="0" class="w-14 h-14 btn shadow-md group"><FilterSvg /></label>
+		<div class="tooltip" data-tip="Filters">
+			<label tabindex="0" class="w-14 h-14 btn shadow-md group"><FilterSvg /></label>
+		</div>
 	</div>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<ul
@@ -33,7 +37,7 @@
 	>
 		<li>
 			<label class="cursor-pointer label">
-				<span class="label-text">Only Starred</span>
+				<span class="label-text">{i("filter.only_starred")}</span>
 				<input
 					type="checkbox"
 					class="toggle toggle-warning"
@@ -44,7 +48,7 @@
 		</li>
 		<li>
 			<label class="cursor-pointer label">
-				<span class="label-text">Only Selected</span>
+				<span class="label-text">{i("filter.only_selected")}</span>
 				<input
 					type="checkbox"
 					class="toggle toggle-primary"

@@ -6,6 +6,8 @@
 	import { saveFiles } from '$lib/functions/saveFiles';
 	import { selectFiles as selectFilesPromise } from '$lib/functions/selectFiles';
 
+	import { i } from '@inlang/sdk-js';
+
 	let fileDropState: 'hover' | 'drop' | 'cancel' = 'cancel';
 	let fileDropPaths: string[] = [];
 
@@ -88,7 +90,7 @@
 		<p class="py-4">{modalMessage}</p>
 		<div class="modal-action">
 			<!-- if there is a button in form, it will close the modal -->
-			<button class="btn btn-primary">Close</button>
+			<button class="btn btn-primary">{i("close")}</button>
 		</div>
 	</form>
 </dialog>
@@ -113,11 +115,11 @@
 		{fileMessage[fileDropState]}
 	</p>
 	<div class="text-sm text-base-content select-none grid grid-rows-2 gap-4">
-		{#each fileDropPaths as path, i}
-			{#if i < 5}
+		{#each fileDropPaths as path, index}
+			{#if index < 5}
 				<div class="badge badge-neutral">{path}</div>
-			{:else if i === 5}
-				<div class="badge badge-neutral">+{fileDropPaths.length - 5} more</div>
+			{:else if index === 5}
+				<div class="badge badge-neutral">+{fileDropPaths.length - 5} {i("more").toLowerCase()}</div>
 			{/if}
 		{/each}
 	</div>

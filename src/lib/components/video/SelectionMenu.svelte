@@ -3,6 +3,8 @@
 	import { videos } from '$lib/stores/videos';
 	import { deleteSelectedVideos } from '$lib/functions/deleteSelectedVideos';
 
+	import {i} from '@inlang/sdk-js';
+
 	function cancelSelection() {
 		videosSelectedForActions.set([]);
 	}
@@ -28,10 +30,10 @@
 	</li>
 
 	<li>
-		<button class="btn btn-sm btn-error btn-outline" on:click={deleteSelection}>Delete</button>
+		<button class="btn btn-sm btn-error btn-outline" on:click={deleteSelection}>{i("actions.delete")}</button>
 	</li>
 
 	<li>
-		<button class="btn btn-sm btn-warning btn-outline" on:click={cancelSelection}>Cancel</button>
+		<button class="btn btn-sm btn-warning btn-outline" on:click={cancelSelection}>{i("actions.cancel")}</button>
 	</li>
 </ul>
