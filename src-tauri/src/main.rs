@@ -3,13 +3,29 @@
 
 mod commands;
 mod db;
+mod routes;
 mod state;
 
 use crate::state::AppState;
+use actix_web::{rt, web, App, HttpServer};
 use ffmpeg_sidecar::command::ffmpeg_is_installed;
 use tauri::{Manager, State};
 
 fn main() {
+    std::thread::spawn(move || {
+        let rt = rt::Runtime::new().unwrap();
+        rt.block_on(
+            HttpServer::new(|| {
+                App::new().service(routes::static_files::handle()).route(
+                    "/qr/{filepath}",
+                    web::get().to(routes::qr_code_route::handler),
+                )
+            })
+            .bind(("127.0.0.1", 8080))?
+            .run(),
+        )
+    });
+
     tauri::Builder::default()
         .manage(AppState {
             db: Default::default(),

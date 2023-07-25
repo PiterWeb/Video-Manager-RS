@@ -21,6 +21,8 @@ tauri = { version = "1.3.0", features = [ "fs-exists", "protocol-asset", "window
 rusqlite = {version = "0.29.0", features = ["bundled"] }
 walkdir = "2.3.3"
 ffmpeg-sidecar = "0.4.1"
+actix-web = "4.3.0"
+actix-files = "0.6.2"
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
