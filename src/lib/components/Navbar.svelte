@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { drawerStore } from '$lib/stores/drawer';
 
-	import { i } from '@inlang/sdk-js';
+	import { i, languages, language, switchLanguage } from '@inlang/sdk-js';
 
 	let path = $page.url.pathname;
 
@@ -78,6 +78,15 @@
 							>
 							{i('navbar.add')}
 						</a>
+					</li>
+					<li>
+						{#each languages as lan}
+							{#if language == lan}
+								<li class="bg-red-300">{lan}</li>
+							{:else}
+								<li on:click={() => switchLanguage(lan)}>{lan}</li>
+							{/if}
+						{/each}
 					</li>
 				</ul>
 			</div>
