@@ -82,9 +82,9 @@
 					<li>
 						{#each languages as lan}
 							{#if language == lan}
-								<li class="bg-red-300">{lan}</li>
+								<li class="bg-primary text-white">{lan}</li>
 							{:else}
-								<li on:click={() => switchLanguage(lan)}>{lan}</li>
+								<li on:click={() => switchLanguage(lan)} on:keydown={() => switchLanguage(lan)}>{lan}</li>
 							{/if}
 						{/each}
 					</li>
