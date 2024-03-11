@@ -8,7 +8,6 @@ mod state;
 
 use crate::state::AppState;
 use actix_web::{rt, web, App, HttpServer};
-use ffmpeg_sidecar::command::ffmpeg_is_installed;
 use tauri::{Manager, State};
 
 fn main() {
@@ -45,10 +44,6 @@ fn main() {
 
             let db = db::create_db(&handle)?;
             *app_state.db.lock().unwrap() = Some(db);
-
-            if !ffmpeg_is_installed() {
-                ffmpeg_sidecar::download::auto_download().unwrap();
-            }
 
             Ok(())
         })
