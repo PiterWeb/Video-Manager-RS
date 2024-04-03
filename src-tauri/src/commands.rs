@@ -16,6 +16,8 @@ pub fn insert_video(app_handle: AppHandle, path: &str) -> String {
         return format!("error inserting video: unsupported file extension");
     }
 
+  
+
     match app_handle.db(|db| db::insert_video(path, db)) {
         Ok(_) => "inserted video".to_string(),
 
@@ -66,5 +68,35 @@ pub fn delete_selected_videos(app_handle: AppHandle, paths: Vec<String>) -> Stri
         Err(e) => {
             format!("error deleting videos: {}", e)
         }
+    }
+}
+
+#[tauri::command]
+pub fn get_favorite_videos(app_handle: AppHandle) -> Vec<String> {
+    match app_handle.db(|db| db::get_favorite_videos(db)) {
+        Ok(videos) => videos,
+        Err(_) => Vec::new(),
+    }
+}
+
+#[tauri::command]
+pub fn set_favorite_video(app_handle: AppHandle, path: &str) -> String {
+    match app_handle.db(|db| db::set_favorite_video(path, db)) {
+        Ok(_) => format!("Successfully added video to favorites"),
+        Err(e) => format!(
+            "Error setting video {0} to favorite with err : {1}",
+            path, e
+        ),
+    }
+}
+
+#[tauri::command]
+pub fn unset_favorite_video(app_handle: AppHandle, path: &str) -> String {
+    match app_handle.db(|db| db::unset_favorite_video(path, db)) {
+        Ok(_) => format!("Successfully removed video from favorites"),
+        Err(e) => format!(
+            "Error unsetting video {0} from favorite with err : {1}",
+            path, e
+        ),
     }
 }

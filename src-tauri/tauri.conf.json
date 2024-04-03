@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "video-manager-rs",
-    "version": "0.2.0"
+    "version": "0.2.5"
   },
   "tauri": {
     "allowlist": {
@@ -23,13 +23,17 @@
       "fs": {
         "copyFile": false,
         "createDir": false,
-        "exists": false,
+        "exists": true,
         "readDir": true,
         "readFile": true,
         "removeDir": false,
         "removeFile": false,
         "renameFile": false,
-        "scope": [],
+        "scope": [
+          "**",
+          "**/*",
+          "/**/*"
+        ],
         "writeFile": false
       },
       "dialog": {

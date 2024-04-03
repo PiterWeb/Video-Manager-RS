@@ -1,8 +1,15 @@
 # Video Manager RS 🦀
+[![publish](https://github.com/PiterWeb/Video-Manager-RS/actions/workflows/publish-action.yml/badge.svg)](https://github.com/PiterWeb/Video-Manager-RS/actions/workflows/publish-action.yml)
+
+### Translation status
+[![translation badge](https://inlang.com/badge?url=github.com/PiterWeb/Video-Manager-RS)](https://inlang.com/editor/github.com/PiterWeb/Video-Manager-RS?ref=badge)
+
 
 ### Description
 
-🔥 Blazingly fast desktop aplication to 📦 browse your favourite movies/videos 🎞
+🔥 Blazingly fast desktop aplication to 📦 browse your favourite movies/videos 🎞 built on top of Rust 🦀 and Web Technologies
+
+#### [ Download (MacOS, Linux, Windows)](https://github.com/PiterWeb/Video-Manager-RS/releases)
 
 ### Purpose
 

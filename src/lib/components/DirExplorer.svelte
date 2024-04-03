@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { scanFolder } from '$lib/functions/scanFolder';
 
+	import { i } from '@inlang/sdk-js';
+
 	const successModal = {
 		title: 'Operation finished!',
 		message: 'File/s successfully added to the system'
@@ -36,12 +38,12 @@
 		<p class="py-4">{modalMessage}</p>
 		<div class="modal-action">
 			<!-- if there is a button in form, it will close the modal -->
-			<button class="btn btn-primary">Close</button>
+			<button class="btn btn-primary">{i("close")}</button>
 		</div>
 	</form>
 </dialog>
 
 <section class="basis-1/3">
-	<label for="scan" class="label text-xl normal-case font-bold">Scan directories</label>
-	<button id="scan" class="btn btn-primary w-full" on:click={scan}>Select</button>
+	<label for="scan" class="label text-xl normal-case font-bold">{i("explorer.scan_directories")}</label>
+	<button id="scan" class="btn btn-primary w-full" on:click={scan}>{i("select")}</button>
 </section>

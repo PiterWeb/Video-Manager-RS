@@ -1,0 +1,29 @@
+{
+    "app_name": "Video Manager RS",
+    "more": "More",
+    "close": "Close",
+    "select": "Select",
+    "navbar": {
+        "explore": "Explore",
+        "add": "Add"
+    },
+    "video_player": {
+        "no_video": "No video selected",
+        "no_video_description": "Click on a video from the left panel"
+    },
+    "explorer": {
+        "scan_directories": "Scan the directories"
+    },
+    "filter": {
+        "only_starred": "Only starred",
+        "only_selected": "Only selected"
+    },
+    "actions": {
+        "delete": "Delete",
+        "cancel": "Cancel"
+    },
+    "video_herarchy": {
+        "title": "Select a video to play",
+        "no_videos": "No videos found"
+    }
+}
